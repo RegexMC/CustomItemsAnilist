@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"target": "es6",
+		"module": "ES2020",
+		"esModuleInterop": true,
+		"sourceMap": false,
+		"rootDir": "src",
+		"outDir": "dist/js",
+		"jsx": "react",
+		"types": ["@types/chrome"],
+		"typeRoots": ["node_modules/@types"]
+	}
+}

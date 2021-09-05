@@ -1,0 +1,34 @@
+{
+	"manifest_version": 3,
+	"name": "Custom Anilist",
+	"description": "Add your own items to your anilist lists",
+	"version": "1.0",
+	"icons": {
+		"16": "/assets/anilist16.png",
+		"32": "/assets/anilist32.png",
+		"48": "/assets/anilist48.png",
+		"64": "/assets/anilist64.png",
+		"128": "/assets/anilist128.png",
+		"512": "/assets/anilist512.png"
+	},
+	"action": {
+		"default_popup": "popup.html",
+		"deafult_title": "Anilist Items",
+		"default_icon": {
+			"16": "/assets/anilist16.png",
+			"32": "/assets/anilist32.png",
+			"48": "/assets/anilist48.png",
+			"64": "/assets/anilist64.png",
+			"128": "/assets/anilist128.png",
+			"512": "/assets/anilist512.png"
+		}
+	},
+
+	"background": {
+		"service_worker": "background.js",
+		"type": "module"
+	},
+
+	"permissions": ["storage", "activeTab", "scripting", "clipboardRead", "tabs", "webNavigation", "scripting"],
+	"host_permissions": ["https://anilist.co/*"]
+}
