@@ -49,15 +49,6 @@ const data: Data = {
 			undefined,
 			5,
 			5
-		),
-		new Manga(
-			"Test Title 5",
-			"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
-			"Planning",
-			5,
-			undefined,
-			10,
-			5
 		)
 	]
 };

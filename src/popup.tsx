@@ -1,57 +1,77 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
+import { TextField, Select, MenuItem } from "@material-ui/core";
+import { getData, setData } from "./utils/utils";
+import { Manga } from "./components/manga";
+import { Status } from "./components/types";
+
+// import { Select } from "@material-ui/core";
 
 const Popup = () => {
-  const [count, setCount] = useState(0);
-  const [currentURL, setCurrentURL] = useState<string>();
+	const [state, setState] = React.useState({
+		status: "Planning"
+	});
 
-  useEffect(() => {
-    chrome.action.setBadgeText({ text: count.toString() });
-  }, [count]);
+	const handleChange = (event: any) => {
+		setState({
+			status: event.target.value
+		});
+	};
 
-  useEffect(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      setCurrentURL(tabs[0].url);
-    });
-  }, []);
+	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+		console.log("test");
+		const title: string = (document.getElementById("title") as any).value;
+		const cover: string = (document.getElementById("cover") as any).value;
+		const status: Status = document.getElementById("status")?.innerText as Status;
+		const progress: number = (document.getElementById("progress") as any).value;
+		const score: number = (document.getElementById("score") as any).value;
+		const url: string | undefined = (document.getElementById("url") as any).value;
 
-  const changeBackground = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      const tab = tabs[0];
-      if (tab.id) {
-        chrome.tabs.sendMessage(
-          tab.id,
-          {
-            color: "#555555",
-          },
-          (msg) => {
-            console.log("result message:", msg);
-          }
-        );
-      }
-    });
-  };
+		if (!title || !cover || !status) {
+			alert("Please fill in all required inputs!");
+			return;
+		}
 
-  return (
-    <>
-      <ul style={{ minWidth: "700px" }}>
-        <li>Current URL: {currentURL}</li>
-        <li>Current Time: {new Date().toLocaleTimeString()}</li>
-      </ul>
-      <button
-        onClick={() => setCount(count + 1)}
-        style={{ marginRight: "5px" }}
-      >
-        count up
-      </button>
-      <button onClick={changeBackground}>change background</button>
-    </>
-  );
+		getData().then((data) => {
+			var manga = new Manga(title, cover, status, progress, url, score);
+			data.manga.push(manga);
+			setData(data);
+		});
+
+		alert("Added manga");
+	}
+
+	return (
+		<>
+			<form noValidate autoComplete="off" style={{ minWidth: "50em" }} onSubmit={handleSubmit}>
+				<Select id="status" value={state.status} name="status" onChange={handleChange} required>
+					<MenuItem value={"Planning"}>Planning</MenuItem>
+					<MenuItem value={"Reading"}>Reading</MenuItem>
+					<MenuItem value={"Paused"}>Paused</MenuItem>
+					<MenuItem value={"Completed"}>Completed</MenuItem>
+					<MenuItem value={"Dropped"}>Dropped</MenuItem>
+				</Select>
+				<br></br> <br></br>
+				<TextField required id="title" label="Title" variant="outlined" />
+				<br></br> <br></br>
+				<TextField required id="cover" label="Cover" variant="outlined" />
+				<br></br> <br></br>
+				<TextField required id="progress" label="Progress" variant="outlined" type="number" />
+				<br></br> <br></br>
+				<TextField required id="score" label="Score" variant="outlined" type="number" />
+				<br></br> <br></br>
+				<TextField required id="url" label="URL" variant="outlined" />
+				<br></br> <br></br>
+				<input type="submit" value="Submit" />
+			</form>
+		</>
+	);
 };
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Popup />
-  </React.StrictMode>,
-  document.getElementById("root")
+	<React.StrictMode>
+		<Popup />
+	</React.StrictMode>,
+	document.getElementById("root")
 );
