@@ -1,55 +1,56 @@
-import { Manga } from "./components/manga"; // God damn this took me so long to get working
+// import { Manga } from "./components/manga"; // God damn this took me so long to get working
 import { Data } from "./components/types";
 import { getData, getPath, setData } from "./utils/utils";
 
 const data: Data = {
 	history: [],
 	manga: [
-		new Manga(
-			"Test Title 1",
-			"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
-			"Reading",
-			1,
-			undefined,
-			1,
-			1
-		),
-		new Manga(
-			"Test Title 2",
-			"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
-			"Completed",
-			2,
-			undefined,
-			2,
-			2
-		),
-		new Manga(
-			"Test Title 3",
-			"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
-			"Paused",
-			3,
-			undefined,
-			3,
-			3
-		),
-		new Manga(
-			"Test Title 4",
-			"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
-			"Dropped",
-			4,
-			undefined,
-			4,
-			4
-		),
-		new Manga(
-			"Test Title 5",
-			"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
-			"Planning",
-			5,
-			undefined,
-			5,
-			5
-		)
+		// Data for testing
+		// new Manga(
+		// 	"Test Title 1",
+		// 	"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
+		// 	"Reading",
+		// 	1,
+		// 	undefined,
+		// 	1,
+		// 	1
+		// ),
+		// new Manga(
+		// 	"Test Title 2",
+		// 	"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
+		// 	"Completed",
+		// 	2,
+		// 	undefined,
+		// 	2,
+		// 	2
+		// ),
+		// new Manga(
+		// 	"Test Title 3",
+		// 	"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
+		// 	"Paused",
+		// 	3,
+		// 	undefined,
+		// 	3,
+		// 	3
+		// ),
+		// new Manga(
+		// 	"Test Title 4",
+		// 	"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
+		// 	"Dropped",
+		// 	4,
+		// 	undefined,
+		// 	4,
+		// 	4
+		// ),
+		// new Manga(
+		// 	"Test Title 5",
+		// 	"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
+		// 	"Planning",
+		// 	5,
+		// 	undefined,
+		// 	5,
+		// 	5
+		// )
 	]
 };
 

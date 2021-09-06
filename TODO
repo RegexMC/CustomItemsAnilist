@@ -3,3 +3,4 @@ TODO:
 	- Try catch some parts that will throw errors
 	- Add ability to set and update word count etc.
 	- Clean up code
+	- Auto fill creation data based on current page

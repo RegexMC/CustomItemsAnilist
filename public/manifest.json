@@ -17,6 +17,6 @@
 	},
 	"action": {},
 
-	"permissions": ["storage", "activeTab", "scripting", "clipboardRead", "tabs", "webNavigation", "scripting"],
+	"permissions": ["storage", "activeTab", "tabs", "scripting"],
 	"host_permissions": ["https://anilist.co/*"]
 }

@@ -3,7 +3,6 @@ import { getData, setData } from "../utils/utils";
 
 // Manga page.
 getData().then((data) => {
-	console.log(data.history);
 	const previousUrl = data.history[1];
 	const manga = data.manga.find(
 		(m) =>

@@ -18,7 +18,6 @@ const Popup = () => {
 
 	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		console.log("test");
 		const title: string = (document.getElementById("title") as any).value;
 		const cover: string = (document.getElementById("cover") as any).value;
 		const status: Status = document.getElementById("status")?.innerText as Status;
