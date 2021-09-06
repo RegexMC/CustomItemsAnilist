@@ -4,3 +4,4 @@ TODO:
 	- Add ability to set and update word count etc.
 	- Clean up code
 	- Auto fill creation data based on current page
+	- Add confirmation when importing data as it overwrites it
