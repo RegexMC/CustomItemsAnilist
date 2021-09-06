@@ -61,7 +61,6 @@ export function elementListener(document: Document, selector: string): TimedProm
 					try {
 						const node = mutation.addedNodes[i];
 						if (node.nodeType == 1) {
-							console.log(node as Element);
 							if ((node as Element).matches(selector)) {
 								resolve(node as Element);
 								observer.disconnect();

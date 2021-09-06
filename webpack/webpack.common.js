@@ -9,7 +9,8 @@ module.exports = {
 		background: path.join(srcDir, "background.ts"),
 		home: path.join(srcDir, "pages/home.ts"),
 		mangalist: path.join(srcDir, "pages/user/mangalist.ts"),
-		user: path.join(srcDir, "pages/user/user.ts")
+		user: path.join(srcDir, "pages/user/user.ts"),
+		404: path.join(srcDir, "pages/404.ts")
 	},
 	output: {
 		path: path.join(__dirname, "../dist/"),

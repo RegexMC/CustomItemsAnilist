@@ -68,6 +68,14 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 	const url = tab.url.toString().toLowerCase();
 	if (!url.startsWith("https://anilist.co")) return;
 
+	if (changeInfo.status == "loading") {
+		getData().then((data) => {
+			data.history.unshift(url);
+			data.history.length = 6;
+			setData(data);
+		});
+	}
+
 	if (changeInfo.status == "complete") {
 		const path = getPath(url);
 		var script: string = "";
@@ -81,12 +89,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 		} else if (/user\/.+$/.test(path)) {
 			script = "user.js";
 		} else return;
-
-		getData().then((data) => {
-			data.history.unshift(url);
-			data.history.length = 6;
-			setData(data);
-		});
 
 		chrome.scripting.executeScript({
 			target: { tabId: tabId, allFrames: false },
