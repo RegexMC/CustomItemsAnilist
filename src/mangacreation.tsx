@@ -5,8 +5,6 @@ import { getData, setData } from "./utils/utils";
 import { Manga } from "./components/manga";
 import { Status } from "./components/types";
 
-// import { Select } from "@material-ui/core";
-
 const Popup = () => {
 	const [state, setState] = React.useState({
 		status: "Planning"
@@ -29,7 +27,16 @@ const Popup = () => {
 		const url: string | undefined = (document.getElementById("url") as any).value;
 
 		if (!title || !cover || !status) {
-			alert("Please fill in all required inputs!");
+			var failDiv = document.createElement("div");
+			failDiv.innerHTML = "Please fill in all inputs";
+			failDiv.id = "fail";
+			failDiv.classList.add("alert");
+
+			document.getElementById("root")?.prepend(failDiv);
+
+			setTimeout(function () {
+				document.getElementById("fail")?.remove();
+			}, 5000);
 			return;
 		}
 
@@ -39,12 +46,27 @@ const Popup = () => {
 			setData(data);
 		});
 
-		alert("Added manga");
+		var successDiv = document.createElement("div");
+		successDiv.innerHTML = "Successfully added manga, " + title;
+		successDiv.id = "success";
+		successDiv.classList.add("alert");
+
+		document.getElementById("root")?.prepend(successDiv);
+
+		setTimeout(function () {
+			document.getElementById("success")?.remove();
+		}, 5000);
 	}
 
 	return (
 		<>
-			<form noValidate autoComplete="off" style={{ minWidth: "50em" }} onSubmit={handleSubmit}>
+			<form
+				noValidate
+				autoComplete="off"
+				onSubmit={handleSubmit}
+				style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}
+			>
+				<br></br> <br></br>
 				<Select id="status" value={state.status} name="status" onChange={handleChange} required>
 					<MenuItem value={"Planning"}>Planning</MenuItem>
 					<MenuItem value={"Reading"}>Reading</MenuItem>
@@ -59,11 +81,16 @@ const Popup = () => {
 				<br></br> <br></br>
 				<TextField required id="progress" label="Progress" variant="outlined" type="number" />
 				<br></br> <br></br>
-				<TextField required id="score" label="Score" variant="outlined" type="number" />
+				<TextField id="score" label="Score" variant="outlined" type="number" />
 				<br></br> <br></br>
-				<TextField required id="url" label="URL" variant="outlined" />
+				<TextField id="url" label="URL" variant="outlined" />
 				<br></br> <br></br>
-				<input type="submit" value="Submit" />
+				<input
+					id="submit"
+					type="submit"
+					value="Submit"
+					style={{ background: "rgb(61,180,242)", padding: "11px 16px" }}
+				/>
 			</form>
 		</>
 	);

@@ -5,7 +5,7 @@ const srcDir = path.join(__dirname, "..", "src");
 
 module.exports = {
 	entry: {
-		popup: path.join(srcDir, "popup.tsx"),
+		mangacreation: path.join(srcDir, "mangacreation.tsx"),
 		background: path.join(srcDir, "background.ts"),
 		home: path.join(srcDir, "pages/home.ts"),
 		mangalist: path.join(srcDir, "pages/user/mangalist.ts"),

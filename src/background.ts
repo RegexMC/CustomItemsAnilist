@@ -57,6 +57,12 @@ chrome.runtime.onInstalled.addListener(() => {
 	chrome.storage.sync.set({ data: data });
 });
 
+chrome.action.onClicked.addListener((tab) => {
+	chrome.tabs.create({
+		url: chrome.runtime.getURL("./mangacreation.html")
+	});
+});
+
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 	if (!tab.url) return;
 	const url = tab.url.toString().toLowerCase();
