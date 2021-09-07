@@ -37,6 +37,8 @@ getData().then((data) => {
 									<option value="Dropped" ${manga.status == ("Dropped" as Status) ? "selected" : ""}>Dropped</option>
 								</select>
 							</div>
+							<br><br>
+							<a style="color: red;" id="deleteentry">Delete</a>
 						</div>
 					</div>
 				</div>
@@ -156,5 +158,16 @@ getData().then((data) => {
 			data.manga = data.manga.map((m) => (m.title === manga.title ? manga : m));
 			setData(data);
 		});
+	});
+	document.getElementById("deleteentry")?.addEventListener("click", () => {
+		var confirmDelete = confirm("Are you sure you want to delete this manga entry?");
+		if (confirmDelete == true) {
+			getData().then((data) => {
+				data.manga = data.manga.filter((m) => JSON.stringify(m) !== JSON.stringify(manga));
+				setData(data);
+				alert("Deleted manga entry");
+				window.close();
+			});
+		}
 	});
 });
