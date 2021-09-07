@@ -58,32 +58,37 @@ const Popup = () => {
 	}
 
 	function importData() {
-		try {
-			// TODO: add confirmation as it overwrites manga list.
-			var inputData: Data = JSON.parse((document.getElementById("datainput") as any).value);
-			setData(inputData);
-			var successDiv = document.createElement("div");
-			successDiv.innerHTML = "Successfully imported data!";
-			successDiv.id = "success";
-			successDiv.classList.add("alert");
+		var confirmImport = confirm(
+			"Are you sure you want to OVERWRITE your current data with what is in the input area? NOTE: THIS CANNOT BE UNDONE!"
+		);
+		if (confirmImport == true) {
+			try {
+				// TODO: add confirmation as it overwrites manga list.
+				var inputData: Data = JSON.parse((document.getElementById("datainput") as any).value);
+				setData(inputData);
+				var successDiv = document.createElement("div");
+				successDiv.innerHTML = "Successfully imported data!";
+				successDiv.id = "success";
+				successDiv.classList.add("alert");
 
-			document.getElementById("root")?.prepend(successDiv);
+				document.getElementById("root")?.prepend(successDiv);
 
-			setTimeout(function () {
-				document.getElementById("success")?.remove();
-			}, 5000);
-		} catch (e) {
-			console.log(e);
-			var failDiv = document.createElement("div");
-			failDiv.innerHTML = "Failed to import data!";
-			failDiv.id = "fail";
-			failDiv.classList.add("alert");
+				setTimeout(function () {
+					document.getElementById("success")?.remove();
+				}, 5000);
+			} catch (e) {
+				console.log(e);
+				var failDiv = document.createElement("div");
+				failDiv.innerHTML = "Failed to import data!";
+				failDiv.id = "fail";
+				failDiv.classList.add("alert");
 
-			document.getElementById("root")?.prepend(failDiv);
+				document.getElementById("root")?.prepend(failDiv);
 
-			setTimeout(function () {
-				document.getElementById("fail")?.remove();
-			}, 5000);
+				setTimeout(function () {
+					document.getElementById("fail")?.remove();
+				}, 5000);
+			}
 		}
 	}
 

@@ -2,7 +2,6 @@ TODO:
 	- Change manga comparison code to check whole object so you can have multiple entries of same title. (will still faulter if progress etc. is the same)
 	- Try catch some parts that will throw errors
 	- Add ability to set and update word count etc.
-	- Add confirmation when importing data as it overwrites it
 	- Clean up code
 	- Auto fill creation data based on current page
 	- Give preview of cover when creating manga
