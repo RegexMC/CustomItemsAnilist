@@ -6,3 +6,4 @@ TODO:
 	- Auto fill creation data based on current page
 	- Give preview of cover when creating manga
 	- Rename "icon" variables etc. to cover
+	- Fix extra stats showing twice (assign id and check beforehand?)

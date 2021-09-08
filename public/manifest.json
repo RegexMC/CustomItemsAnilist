@@ -4,12 +4,13 @@
 	"description": "Add your own items to your anilist lists",
 	"version": "1.0",
 	"icons": {
-		"16": "/assets/anilist16.png",
-		"32": "/assets/anilist32.png",
-		"48": "/assets/anilist48.png",
-		"64": "/assets/anilist64.png",
-		"128": "/assets/anilist128.png",
-		"512": "/assets/anilist512.png"
+		"16": "/assets/CIA16.png",
+		"32": "/assets/CIA32.png",
+		"48": "/assets/CIA48.png",
+		"64": "/assets/CIA64.png",
+		"128": "/assets/CIA128.png",
+		"512": "/assets/CIA512.png",
+		"1024": "/assets/CIA1024.png"
 	},
 	"background": {
 		"service_worker": "background.js",

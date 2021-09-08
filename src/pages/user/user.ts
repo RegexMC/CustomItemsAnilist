@@ -14,7 +14,9 @@ elementListener(
 			<div data-v-815ccddc="" class="label">Total Manga</div>
 		</div>
 		<div data-v-815ccddc="" class="stat">
-			<div data-v-815ccddc="" class="value">${data.manga.map((m) => m.progress).reduce((a, b) => a + b, 0)}</div>
+			<div data-v-815ccddc="" class="value">${data.manga
+				.map((m) => m.progress)
+				.reduce((a, b) => parseInt(a.toString()) + parseInt(b.toString()), 0)}</div>
 			<div data-v-815ccddc="" class="label">Chapters Read</div>
 		</div>
 		<div data-v-815ccddc="" class="stat">
