@@ -1,4 +1,5 @@
 TODO:
+	- Manga data seems to be randomly resetting? Chrome issue or writing bad data? Gotta debug
 	- Assign ID to each manga allowing manga with same titles
 	- Try catch some parts that will throw errors
 	- Add ability to set and update word count etc.
