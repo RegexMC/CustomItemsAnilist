@@ -1,5 +1,7 @@
 TODO:
 	- Manga data seems to be randomly resetting? Chrome issue or writing bad data? Gotta debug
+	- Manga stats not showing at all if there are none (Should just show 0)
+	- When editing manga, setting progress by entering manually w/o clicking up/down causes it to not update
 	- Assign ID to each manga allowing manga with same titles
 	- Try catch some parts that will throw errors
 	- Add ability to set and update word count etc.
