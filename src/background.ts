@@ -1,12 +1,17 @@
+// /// #if DEBUG
 // import { Manga } from "./components/manga"; // God damn this took me so long to get working
+// import { uuid } from "uuidv4";
+// /// #endif
+
 import { Data } from "./components/types";
 import { getData, getPath, setData } from "./utils/utils";
 
 const data: Data = {
 	history: [],
 	manga: [
-		// Data for testing
+		// /// #if DEBUG
 		// new Manga(
+		// 	uuid(),
 		// 	"Test Title 1",
 		// 	"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
 		// 	"Reading",
@@ -16,6 +21,7 @@ const data: Data = {
 		// 	1
 		// ),
 		// new Manga(
+		// 	uuid(),
 		// 	"Test Title 2",
 		// 	"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
 		// 	"Completed",
@@ -25,6 +31,7 @@ const data: Data = {
 		// 	2
 		// ),
 		// new Manga(
+		// 	uuid(),
 		// 	"Test Title 3",
 		// 	"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
 		// 	"Paused",
@@ -34,6 +41,7 @@ const data: Data = {
 		// 	3
 		// ),
 		// new Manga(
+		// 	uuid(),
 		// 	"Test Title 4",
 		// 	"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
 		// 	"Dropped",
@@ -43,6 +51,7 @@ const data: Data = {
 		// 	4
 		// ),
 		// new Manga(
+		// 	uuid(),
 		// 	"Test Title 5",
 		// 	"https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx107282-ZzzqzHRZShT6.png",
 		// 	"Planning",
@@ -51,6 +60,7 @@ const data: Data = {
 		// 	5,
 		// 	5
 		// )
+		// /// #endif
 	]
 };
 

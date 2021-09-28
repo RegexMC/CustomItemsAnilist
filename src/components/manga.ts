@@ -1,8 +1,9 @@
 import { Status } from "./types";
 
 class Manga {
+	uid: string;
 	title: string;
-	icon: string;
+	cover: string;
 	status: Status;
 	progress: number;
 	score?: number;
@@ -10,9 +11,9 @@ class Manga {
 	url?: string;
 
 	/**
-	 *
+	 * @param uid
 	 * @param title
-	 * @param icon
+	 * @param cover
 	 * @param status
 	 * @param progress Chapters read
 	 * @param url Link of where to read the manga
@@ -20,16 +21,18 @@ class Manga {
 	 * @param words Total words
 	 */
 	constructor(
+		uid: string,
 		title: string,
-		icon: string,
+		cover: string,
 		status: Status,
 		progress: number,
 		url?: string,
 		score?: number,
 		words?: number
 	) {
+		this.uid = uid;
 		this.title = title;
-		this.icon = icon;
+		this.cover = cover;
 		this.status = status;
 		this.progress = progress;
 		this.url = url;

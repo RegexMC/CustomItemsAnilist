@@ -4,6 +4,7 @@ import { TextField, Select, MenuItem } from "@material-ui/core";
 import { getData, setData } from "./utils/utils";
 import { Manga } from "./components/manga";
 import { Data, Status } from "./components/types";
+import { uuid } from "uuidv4";
 
 const Popup = () => {
 	const [state, setState] = React.useState({
@@ -40,7 +41,7 @@ const Popup = () => {
 		}
 
 		getData().then((data) => {
-			var manga = new Manga(title, cover, status, progress, url, score);
+			var manga = new Manga(uuid(), title, cover, status, progress, url, score);
 			data.manga.push(manga);
 			setData(data);
 		});

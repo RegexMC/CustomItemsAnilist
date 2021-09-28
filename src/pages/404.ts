@@ -4,14 +4,10 @@ import { getData, setData } from "../utils/utils";
 // Manga page.
 getData().then((data) => {
 	const previousUrl = data.history[1];
-	const manga = data.manga.find(
-		(m) =>
-			encodeURI(m.title.replace(" ", "").toLocaleLowerCase()) ==
-			previousUrl.split("/")[previousUrl.split("/").length - 1]
-	);
+	const manga = data.manga.find((m) => encodeURI(m.uid) == previousUrl.split("/")[previousUrl.split("/").length - 1]);
 	if (manga == null) return;
 	document.title = manga.title;
-	window.history.pushState("", "", ">manga>" + encodeURI(manga.title.replace(" ", "").toLocaleLowerCase()));
+	window.history.pushState("", "", ">manga>" + encodeURI(manga.uid));
 
 	var pageContent = document.querySelector("#app > div.page-content");
 	if (pageContent == null) return;
@@ -21,7 +17,7 @@ getData().then((data) => {
 			<div data-v-4df465ff="" class="container" style="min-height: 250px">
 				<div data-v-4df465ff="" class="cover-wrap">
 					<div data-v-4df465ff="" class="cover-wrap-inner" style="position: static">
-						<img data-v-4df465ff="" src="${manga.icon}" class="cover" />
+						<img data-v-4df465ff="" src="${manga.cover}" class="cover" />
 						<div data-v-4df465ff="" class="actions">
 							<div
 								data-v-4df465ff=""
@@ -100,12 +96,17 @@ getData().then((data) => {
 </style>`
 	);
 
-	document.getElementById("status")?.addEventListener("change", (e) => {
-		var status: Status = (document.getElementById("status") as any).value;
-		if (status == manga.status) return;
+	function isNumber(value: string | number): boolean {
+		return value != null && value !== "" && !isNaN(Number(value.toString()));
+	}
+
+	document.getElementById("progress")?.addEventListener("keyup", (e) => {
+		var progress: number = parseInt((e.target as HTMLInputElement).value);
+		if (!isNumber(progress)) return;
+		if (progress < 1) return;
 		getData().then((data) => {
-			manga.status = status;
-			data.manga = data.manga.map((m) => (m.title === manga.title ? manga : m));
+			manga.progress = progress;
+			data.manga = data.manga.map((m) => (m.uid === manga.uid ? manga : m));
 			setData(data);
 		});
 	});
@@ -118,7 +119,7 @@ getData().then((data) => {
 
 		getData().then((data) => {
 			manga.progress = progress;
-			data.manga = data.manga.map((m) => (m.title === manga.title ? manga : m));
+			data.manga = data.manga.map((m) => (m.uid === manga.uid ? manga : m));
 			setData(data);
 		});
 	});
@@ -129,7 +130,18 @@ getData().then((data) => {
 
 		getData().then((data) => {
 			manga.progress = progress;
-			data.manga = data.manga.map((m) => (m.title === manga.title ? manga : m));
+			data.manga = data.manga.map((m) => (m.uid === manga.uid ? manga : m));
+			setData(data);
+		});
+	});
+	document.getElementById("score")?.addEventListener("keyup", (e) => {
+		var score: number = parseInt((e.target as HTMLInputElement).value);
+		if (!isNumber(score)) return;
+		if (score < 0 || score > 10) return;
+
+		getData().then((data) => {
+			manga.score = score;
+			data.manga = data.manga.map((m) => (m.uid === manga.uid ? manga : m));
 			setData(data);
 		});
 	});
@@ -142,7 +154,7 @@ getData().then((data) => {
 
 		getData().then((data) => {
 			manga.score = score;
-			data.manga = data.manga.map((m) => (m.title === manga.title ? manga : m));
+			data.manga = data.manga.map((m) => (m.uid === manga.uid ? manga : m));
 			setData(data);
 		});
 	});
@@ -155,15 +167,27 @@ getData().then((data) => {
 
 		getData().then((data) => {
 			manga.score = score;
-			data.manga = data.manga.map((m) => (m.title === manga.title ? manga : m));
+			data.manga = data.manga.map((m) => (m.uid === manga.uid ? manga : m));
 			setData(data);
 		});
 	});
+
+	document.getElementById("status")?.addEventListener("change", (e) => {
+		var status: Status = (document.getElementById("status") as any).value;
+		if (status == manga.status) return;
+
+		getData().then((data) => {
+			manga.status = status;
+			data.manga = data.manga.map((m) => (m.uid === manga.uid ? manga : m));
+			setData(data);
+		});
+	});
+
 	document.getElementById("deleteentry")?.addEventListener("click", () => {
 		var confirmDelete = confirm("Are you sure you want to delete this manga entry?");
 		if (confirmDelete == true) {
 			getData().then((data) => {
-				data.manga = data.manga.filter((m) => JSON.stringify(m) !== JSON.stringify(manga));
+				data.manga = data.manga.filter((m) => m.uid !== manga.uid);
 				setData(data);
 				alert("Deleted manga entry");
 				window.close();

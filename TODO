@@ -1,15 +1,18 @@
 TODO:
 	- Manga data seems to be randomly resetting? Chrome issue or writing bad data? Gotta debug
 	- Manga stats not showing at all if there are none (Should just show 0)
-	- When editing manga, setting progress by entering manually w/o clicking up/down causes it to not update
 	- (not all?) reading manga showing up in https://anilist.co/user/*/mangalist/Completed ?
-	- Assign ID to each manga allowing manga with same titles
 	- Try catch some parts that will throw errors
 	- Add ability to set and update word count etc.
 	- Clean up code
 	- Auto fill creation data based on current page
 	- Give preview of cover when creating manga
-	- Rename "icon" variables etc. to cover
 	- Fix extra stats showing twice (assign id and check beforehand?)
-	- fix stats showing on ur profile
-	
+	- fix stats showing on ur profile* what i mean is like i feel like this is buggy cause it should theoretically show on other people's too
+	- option to have manga be added to normal stats instead of new element
+	- use https://github.com/nippur72/ifdef-loader to add test thing w/o commenting / recommenting each time. cant get it to work (causes window not defined when loading background.js (var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];))
+
+	Done this commit:
+	- Assign ID to each manga allowing manga with same titles
+	- When editing manga, setting progress by entering manually w/o clicking up/down causes it to not update
+	- Rename "icon" variables etc. to cover

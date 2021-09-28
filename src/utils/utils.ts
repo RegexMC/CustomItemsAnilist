@@ -85,12 +85,12 @@ export function generateMangaEntry(manga: Manga, type: "Home" | "List"): string 
 		var out = `<div data-v-4b71d7c6="" data-v-16d5094e="" data-v-6aea970d="" class="media-preview-card small">
 		<a
 			data-v-4b71d7c6=""
-			href="${"\\manga\\" + encodeURI(manga.title.replace(" ", "").toLocaleLowerCase())}"
+			href="${"\\manga\\" + encodeURI(manga.uid)}"
 			class="cover"
-			data-src="${manga.icon}"
+			data-src="${manga.cover}"
 			lazy="loaded"
 			style="
-				background-image: url('${manga.icon}');
+				background-image: url('${manga.cover}');
 			">
 			<div data-v-4b71d7c6="" class="image-overlay">
 				<div data-v-16d5094e="">
@@ -99,9 +99,7 @@ export function generateMangaEntry(manga: Manga, type: "Home" | "List"): string 
 			</div></a
 		>
 		<div data-v-4b71d7c6="" class="content">
-			<a data-v-4b71d7c6="" href="${
-				"\\manga\\" + encodeURI(manga.title.replace(" ", "").toLocaleLowerCase())
-			}" class="title"> ${manga.title} </a>
+			<a data-v-4b71d7c6="" href="${"\\manga\\" + encodeURI(manga.uid)}" class="title"> ${manga.title} </a>
 			<div data-v-4b71d7c6="" class="info">
 				<div data-v-16d5094e="" data-v-4b71d7c6="">
 					Progress: ${manga.progress}
@@ -118,12 +116,12 @@ export function generateMangaEntry(manga: Manga, type: "Home" | "List"): string 
 			<div
 				class="image"
 				style="
-					background-image: url('${manga.icon}');
+					background-image: url('${manga.cover}');
 				"
 			></div>
 		</div>
 		<div class="title">
-			<a href="${"\\manga\\" + encodeURI(manga.title.replace(" ", "").toLocaleLowerCase())}" class="">
+			<a href="${"\\manga\\" + encodeURI(manga.uid)}" class="">
 				${manga.title}
 			</a>
 		</div>
