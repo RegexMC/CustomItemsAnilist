@@ -194,4 +194,14 @@ getData().then((data) => {
 			});
 		}
 	});
+
+	document.addEventListener("click", (e: MouseEvent) => {
+		var href;
+		var target = e.target as HTMLElement;
+		if (target.tagName === "A") {
+			href = target.getAttribute("href");
+			e.preventDefault();
+			document.location.href = "https://anilist.co" + href;
+		}
+	});
 });
