@@ -78,17 +78,25 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 	if (!tab.url) return;
 	const url = tab.url.toString().toLowerCase();
 	if (!url.startsWith("https://anilist.co")) return;
+	const path = getPath(url);
 
 	if (changeInfo.status == "loading") {
-		getData().then((data) => {
-			data.history.unshift(url);
-			data.history.length = 6;
-			setData(data);
-		});
+		if (/%3emanga%3e[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}/i.test(path)) {
+			getData().then((data) => {
+				data.history.unshift("https://anilist.co/" + path.replace(/%3e/gi, "/").substring(1));
+				data.history.length = 6;
+				setData(data);
+			});
+		} else {
+			getData().then((data) => {
+				data.history.unshift(url);
+				data.history.length = 6;
+				setData(data);
+			});
+		}
 	}
 
 	if (changeInfo.status == "complete") {
-		const path = getPath(url);
 		var script: string = "";
 
 		if (path == "home") {
